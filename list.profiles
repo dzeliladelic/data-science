@@ -1,0 +1,16 @@
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
+
+url= "http://olympus.realpython.org/profiles"
+page= urlopen(url)
+html=page.read().decode ("utf-8")
+soup=BeautifulSoup (html, "html-parser")
+
+names=soup.find_all ("a")
+list_of_names= []
+
+for i in names [0:]:
+  result=i.text.strip()
+  list_of_names.append(result)
+
+print (list_of_names)
